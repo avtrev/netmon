@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'netmon';
+  title: String = 'netmon';
+  currentDate: Date = new Date();
+  myName: String;
+
+  constructor(
+    @Inject('nameToken') private name
+  ) {
+    this.myName = this.name;
+  }
 }

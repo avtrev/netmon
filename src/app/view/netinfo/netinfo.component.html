@@ -1,0 +1,18 @@
+<h2>NetInfo</h2>
+<button class="btn btn-secondary">refresh</button>
+<h5>{{ global.currentDate | date: 'yyyy-MM-dd' }}</h5>
+<table class="mt-2 table table-bordered table-hover">
+  <thead class="thead-light">
+    <th>key</th>
+    <th>value</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of data ; index as i; first as isFirst">
+      <ng-container *ngFor="let obj of item | keyvalue;">
+        <td>{{obj.key}}</td>
+        <td>{{obj.value}}</td>
+      </ng-container> 
+    </tr>
+  </tbody>
+</table>
+<hr>

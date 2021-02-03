@@ -3,16 +3,38 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import { NetinfoComponent } from './view/netinfo/netinfo.component';
+import { OpenportsComponent } from './view/openports/openports.component';
+import { ConnectionsComponent } from './view/connections/connections.component';
+import { PacketsComponent } from './view/packets/packets.component';
+import { LogComponent } from './view/log/log.component';
+import { DatePipe } from '@angular/common';
+//service
+
+//global variables
+const name: String = "Trevor";
+const currentDate: Date = new Date();
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavigationComponent,
+    NetinfoComponent,
+    OpenportsComponent,
+    ConnectionsComponent,
+    PacketsComponent,
+    LogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    DatePipe,
+    { provide: 'nameToken', useValue: name },
+    { provide: 'currentDateToken', useValue: currentDate },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
