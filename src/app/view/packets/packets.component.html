@@ -1,1 +1,89 @@
-<h2>Packets</h2>
+
+  <h2>{{title}}</h2>
+  <h5>{{ todayDate | date: 'EEEE MMMM d y hh:mm:ss a' }}</h5>
+  <div id="dumpTypeButtons" class="d-flex" style="gap:2px">
+    <button id="incomingBtn" class="btn btn-secondary"
+      (click)="selectSection($event)">incoming</button>
+    <button id="unfilteredBtn" class="btn btn-secondary"
+      (click)="selectSection($event)">unfiltered</button>
+  </div>
+  <section id="incomingSection" [hidden]="!incomingSectionTrue">
+    <h3>Incoming ipv4 Packets</h3>
+    <div id="functionButtons" style="display:flex;gap:2px;">
+      <button
+        class="btn btn-info"
+      >start</button>
+      <button
+        class="btn btn-info"
+      >clear</button>
+    </div>
+    <div id="tabButtons" class="mt-1"style="display:flex;gap:2px;">
+      <button id="mainBtn"
+        class="btn btn-secondary"
+        [class.active]="mainTrue"
+        (click)="selectTableTab($event)">main</button>
+      <button  id="sessionBtn"
+        class="btn btn-secondary"
+        [class.active]="sessionTrue"
+        (click)="selectTableTab($event)"> session-log</button>
+      <button id="masterBtn"
+        class="btn btn-secondary"
+        [class.active]="masterTrue"
+        (click)="selectTableTab($event)">master-log</button>
+    </div>
+    <section [hidden]="!mainTrue">
+      <ng-container >
+        <h3>main</h3>
+        <div style="overflow:scroll;">
+          <table class="mt-2 table table-bordered table-hover">
+            <thead class="thead-light">
+              <th>remoteIp</th>
+              <th>rPort</th>
+              <th>localIp</th>
+              <th>lPort</th>
+            </thead>
+            <tbody>
+
+            </tbody>
+          </table>
+        </div>
+      </ng-container>
+    </section>
+    <section [hidden]="!sessionTrue">
+      <ng-container>
+        <h3>session</h3>
+        <div style="overflow:scroll;">
+          <table class="mt-2 table table-bordered table-hover">
+            <thead class="thead-light">
+              <th>remoteIp</th>
+              <th>rPort</th>
+              <th>localIp</th>
+              <th>lPort</th>
+            </thead>
+            <tbody>
+
+            </tbody>
+          </table>
+        </div>
+      </ng-container>
+    </section>
+    <section [hidden]="!masterTrue">
+      <ng-container>
+        <h3>master</h3>
+        <div style="overflow:scroll;">
+          <table class="mt-2 table table-bordered table-hover">
+            <thead class="thead-light">
+              <th>remoteIp</th>
+              <th>rPort</th>
+              <th>localIp</th>
+              <th>lPort</th>
+            </thead>
+            <tbody>
+
+            </tbody>
+          </table>
+        </div>
+      </ng-container>
+    </section>
+  </section>
+

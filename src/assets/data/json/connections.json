@@ -1,0 +1,132 @@
+[
+  {
+    "service": "Corex20Sync",
+    "user": "trevorhweir",
+    "ipv": "IPv4",
+    "proto": "TCP",
+    "localip": "10.6.0.190",
+    "localport": "59991",
+    "remoteip": "18.215.76.7",
+    "remoteport": "443"
+  },
+  {
+    "service": "Corex20Sync",
+    "user": "trevorhweir",
+    "ipv": "IPv4",
+    "proto": "TCP",
+    "localip": "10.6.0.190",
+    "localport": "59991",
+    "remoteip": "18.215.76.7",
+    "remoteport": "443"
+  },
+  {
+    "service": "Corex20Sync",
+    "user": "trevorhweir",
+    "ipv": "IPv4",
+    "proto": "TCP",
+    "localip": "10.6.0.190",
+    "localport": "59985",
+    "remoteip": "34.199.17.253",
+    "remoteport": "443"
+  },
+  {
+    "service": "Corex20Sync",
+    "user": "trevorhweir",
+    "ipv": "IPv4",
+    "proto": "TCP",
+    "localip": "10.6.0.190",
+    "localport": "59985",
+    "remoteip": "34.199.17.253",
+    "remoteport": "443"
+  },
+  {
+    "service": "firefox",
+    "user": "trevorhweir",
+    "ipv": "IPv4",
+    "proto": "TCP",
+    "localip": "10.6.0.190",
+    "localport": "59988",
+    "remoteip": "52.37.119.95",
+    "remoteport": "443"
+  },
+  {
+    "service": "firefox",
+    "user": "trevorhweir",
+    "ipv": "IPv4",
+    "proto": "TCP",
+    "localip": "10.6.0.190",
+    "localport": "59959",
+    "remoteip": "34.120.5.221",
+    "remoteport": "443"
+  },
+  {
+    "service": "firefox",
+    "user": "trevorhweir",
+    "ipv": "IPv4",
+    "proto": "TCP",
+    "localip": "10.6.0.190",
+    "localport": "59989",
+    "remoteip": "204.246.190.75",
+    "remoteport": "443"
+  },
+  {
+    "service": "firefox",
+    "user": "trevorhweir",
+    "ipv": "IPv4",
+    "proto": "TCP",
+    "localip": "127.0.0.1",
+    "localport": "59970",
+    "remoteip": "127.0.0.1",
+    "remoteport": "65317"
+  },
+  {
+    "service": "node",
+    "user": "trevorhweir",
+    "ipv": "IPv4",
+    "proto": "TCP",
+    "localip": "127.0.0.1",
+    "localport": "65317",
+    "remoteip": "127.0.0.1",
+    "remoteport": "59970"
+  },
+  {
+    "service": "NordVPNx20IKE",
+    "user": "trevorhweir",
+    "ipv": "IPv4",
+    "proto": "TCP",
+    "localip": "10.6.0.190",
+    "localport": "59986",
+    "remoteip": "104.21.76.182",
+    "remoteport": "443"
+  },
+  {
+    "service": "NordVPNx20IKE",
+    "user": "trevorhweir",
+    "ipv": "IPv4",
+    "proto": "TCP",
+    "localip": "192.168.0.11",
+    "localport": "55842",
+    "remoteip": "3.212.150.249",
+    "remoteport": "8884"
+  },
+  {
+    "service": "rapportd",
+    "user": "trevorhweir",
+    "ipv": "IPv4",
+    "proto": "TCP",
+    "localip": "192.168.0.11",
+    "localport": "49171",
+    "remoteip": "192.168.0.40",
+    "remoteport": "60049"
+  },
+  {
+    "service": "rapportd",
+    "user": "trevorhweir",
+    "ipv": "IPv4",
+    "proto": "TCP",
+    "localip": "192.168.0.11",
+    "localport": "49171",
+    "remoteip": "192.168.0.49",
+    "remoteport": "55661"
+  }
+]

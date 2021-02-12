@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 
 export class GlobalService {
   currentDate: Date = new Date();
-  authorName: String = "Trevor";
+  authorName: string = "Trevor";
+  backendBaseURL: string = "http://192.168.0.11:5000"
   constructor() { }
 }

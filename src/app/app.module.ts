@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';//needed for [(ngModel)]
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,7 +11,7 @@ import { OpenportsComponent } from './view/openports/openports.component';
 import { ConnectionsComponent } from './view/connections/connections.component';
 import { PacketsComponent } from './view/packets/packets.component';
 import { LogComponent } from './view/log/log.component';
-import { DatePipe } from '@angular/common';
+
 //service
 
 //global variables
@@ -28,10 +30,11 @@ const currentDate: Date = new Date();
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
-    DatePipe,
     { provide: 'nameToken', useValue: name },
     { provide: 'currentDateToken', useValue: currentDate },
   ],

@@ -1,0 +1,125 @@
+{
+  "tcp": [
+    {
+      "service": "rapportd",
+      "user": "trevorhweir",
+      "ipv": "IPv4",
+      "proto": "TCP",
+      "port": "49171"
+    },
+    {
+      "service": "rapportd",
+      "user": "trevorhweir",
+      "ipv": "IPv6",
+      "proto": "TCP",
+      "port": "49171"
+    },
+    {
+      "service": "Adobex20",
+      "user": "trevorhweir",
+      "ipv": "IPv4",
+      "proto": "TCP",
+      "port": "15292"
+    },
+    {
+      "service": "Adobex20",
+      "user": "trevorhweir",
+      "ipv": "IPv4",
+      "proto": "TCP",
+      "port": "15393"
+    },
+    {
+      "service": "Adobex20",
+      "user": "trevorhweir",
+      "ipv": "IPv4",
+      "proto": "TCP",
+      "port": "16494"
+    },
+    {
+      "service": "node",
+      "user": "trevorhweir",
+      "ipv": "IPv4",
+      "proto": "TCP",
+      "port": "45623"
+    },
+    {
+      "service": "node",
+      "user": "trevorhweir",
+      "ipv": "IPv4",
+      "proto": "TCP",
+      "port": "49440"
+    },
+    {
+      "service": "node",
+      "user": "trevorhweir",
+      "ipv": "IPv4",
+      "proto": "TCP",
+      "port": "49441"
+    },
+    {
+      "service": "node",
+      "user": "trevorhweir",
+      "ipv": "IPv4",
+      "proto": "TCP",
+      "port": "49424"
+    },
+    {
+      "service": "node",
+      "user": "trevorhweir",
+      "ipv": "IPv4",
+      "proto": "TCP",
+      "port": "4200"
+    },
+    {
+      "service": "node",
+      "user": "trevorhweir",
+      "ipv": "IPv4",
+      "proto": "TCP",
+      "port": "49215"
+    },
+    {
+      "service": "X11.bin",
+      "user": "trevorhweir",
+      "ipv": "IPv6",
+      "proto": "TCP",
+      "port": "6000"
+    },
+    {
+      "service": "X11.bin",
+      "user": "trevorhweir",
+      "ipv": "IPv4",
+      "proto": "TCP",
+      "port": "6000"
+    },
+    {
+      "service": "node",
+      "user": "trevorhweir",
+      "ipv": "IPv4",
+      "proto": "TCP",
+      "port": "64794"
+    }
+  ],
+  "udp": [
+    {
+      "service": "rapportd",
+      "user": "trevorhweir",
+      "ipv": "IPv4",
+      "proto": "UDP",
+      "port": "3722"
+    },
+    {
+      "service": "NEIKEv2Pr",
+      "user": "trevorhweir",
+      "ipv": "IPv4",
+      "proto": "UDP",
+      "port": "21500"
+    },
+    {
+      "service": "NEIKEv2Pr",
+      "user": "trevorhweir",
+      "ipv": "IPv4",
+      "proto": "UDP",
+      "port": "214500"
+    }
+  ]
+}

@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+button,a.btn{
+  border-left: 1px solid #00000080!important;
+  border-bottom: 1px solid #00000080!important;
+  border-right: 1px solid #00000080!important;
+  border-top: 1px solid #00000080!important;
+  box-shadow: 1px -1px 5px #00000040 inset;
+}

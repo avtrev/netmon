@@ -1,0 +1,8 @@
+nav {
+  display: grid;
+  grid-template-columns:auto;
+  grid-auto-flow:column;
+  /* gap:2px; */
+  /* margin:0 auto; */
+  max-width:1000px;
+}
