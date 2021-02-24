@@ -1,56 +1,91 @@
 
-  <h2>{{title}}</h2>
-  <h5>{{ todayDate | date: 'EEEE MMMM d y hh:mm:ss a' }}</h5>
-  <div id="dumpTypeButtons" class="d-flex" style="gap:2px">
-    <button id="incomingBtn" class="btn btn-secondary"
-      (click)="selectSection($event)">incoming</button>
-    <button id="unfilteredBtn" class="btn btn-secondary"
-      (click)="selectSection($event)">unfiltered</button>
-  </div>
-  <section id="incomingSection" [hidden]="!incomingSectionTrue">
-    <h3>Incoming ipv4 Packets</h3>
-    <div id="functionButtons" style="display:flex;gap:2px;">
-      <button
-        class="btn btn-info"
-      >start</button>
-      <button
-        class="btn btn-info"
-      >clear</button>
+  <header #packetsHeader id="packetsHeader">
+    <h2>{{title}}</h2>
+    <h5>{{ todayDate | date: 'EEEE MMMM d y hh:mm:ss a' }}</h5>
+    <div id="dumpTypeButtons" class="d-flex" style="gap:2px">
+      <button id="incomingBtn"
+        class="btn btn-secondary"
+        [class.active]="incomingSectionTrue"
+        [attr.disabled]="dumpTrue ? 'disabled' : null"
+        (click)="selectSection($event)">incoming</button>
+      <button id="unfilteredBtn"
+        class="btn btn-secondary"
+        [class.active]="unfilteredSectionTrue"
+        [attr.disabled]="dumpTrue ? 'disabled' : null"
+        (click)="selectSection($event)">unfiltered</button>
     </div>
-    <div id="tabButtons" class="mt-1"style="display:flex;gap:2px;">
-      <button id="mainBtn"
-        class="btn btn-secondary"
-        [class.active]="mainTrue"
-        (click)="selectTableTab($event)">main</button>
-      <button  id="sessionBtn"
-        class="btn btn-secondary"
-        [class.active]="sessionTrue"
-        (click)="selectTableTab($event)"> session-log</button>
-      <button id="masterBtn"
-        class="btn btn-secondary"
-        [class.active]="masterTrue"
-        (click)="selectTableTab($event)">master-log</button>
-    </div>
-    <section [hidden]="!mainTrue">
-      <ng-container >
-        <h3>main</h3>
-        <div style="overflow:scroll;">
-          <table class="mt-2 table table-bordered table-hover">
-            <thead class="thead-light">
-              <th>remoteIp</th>
-              <th>rPort</th>
-              <th>localIp</th>
-              <th>lPort</th>
-            </thead>
-            <tbody>
+  </header>
 
+  <!--INCOMING IPV4 SECTION-->
+  <section id="incomingSection" [hidden]="!incomingSectionTrue">
+    <header #incomingHeader id="incomingHeader">
+      <h3>Incoming ipv4 Packets</h3>
+      <div id="functionButtons" style="display:flex;gap:2px;">
+        <button
+          id="incomingStartBtn"
+          class="btn"
+          [ngClass]="dumpTrue ? 'btn-danger' : 'btn-success'"
+          (click)="getTcpdump()">{{dumpTrue ? "stop" : "start"}}</button>
+        <button
+          id="incomingClearBtn"
+          class="btn btn-warning"
+          (click)="clearData($event)">clear</button>
+        <button
+          id="incomingScrollBtn"
+          class="btn btn-light"
+          [class.active]="scrollToBottomTrue"
+          (click)="toggleScrollToBottom($event)">{{scrollToBottomTrue ? '&darr;' : '&mdash;' }}</button>
+      </div>
+    
+      <!-- TAB BUTTONS -->
+      <div id="tabButtons" class="mt-1"style="display:flex;">
+        <button id="mainBtn"
+          class="btn btn-secondary"
+          [class.active]="mainTrue"
+          (click)="selectTableTab($event)">main</button>
+        <button  id="sessionBtn"
+          class="btn btn-secondary"
+          [class.active]="sessionTrue"
+          (click)="selectTableTab($event)"> session-log</button>
+        <button id="masterBtn"
+          class="btn btn-secondary"
+          [class.active]="masterTrue"
+          (click)="selectTableTab($event)">master-log</button>
+      </div>
+    </header>
+    <!-- MAIN TAB -->
+    <section id="mainTab" class="packetsTab mb-2" [hidden]="!mainTrue">
+        <header #mainTabHeader id="mainTabHeader">
+          <h3 class="ml-2">main</h3>
+        </header>
+        <table #incomingTableHead id="incomingTableHead" class="mb-0 table table-bordered">
+          <thead class="thead-light">
+            <th [style.width]="thw[0]">remoteIp</th>
+            <th [style.width]="thw[1]">rPort</th>
+            <th [style.width]="thw[2]">localIp</th>
+            <th [style.width]="thw[3]">lPort</th>
+          </thead>
+        </table>
+        <div #targetIncoming id="incomingMainOutput" class="" style="overflow:scroll;">
+          <table id="mainTable" class=" table table-bordered table-hover"
+          (wheel)="dumpTrue && scrollToBottomTrue ? scrollToBottomTrue = false : null"
+          (window:resize)="onResize($event)">
+            <thead [style.visibility]="'hidden'" class="thead-light">
+              <th (resized)="thw[0] = returnSize($event)" #rip id="rip" class="rip">remoteIp</th>
+              <th (resized)="thw[1] = returnSize($event)"  #rp id="rp" class="rp">rPort</th>
+              <th (resized)="thw[2] = returnSize($event)"  #lip id="lip" class="lip">localIp</th>
+              <th (resized)="thw[3] = returnSize($event)"  #lp id="lp" class="lp">lPort</th>
+            </thead>
+            <tbody >
+              <tr *ngFor="let row of incomingData">
+                <td *ngFor="let cell of row | keyvalue : orderOriginal">{{cell.value}}</td>
+              </tr>
             </tbody>
           </table>
         </div>
-      </ng-container>
     </section>
-    <section [hidden]="!sessionTrue">
-      <ng-container>
+    <!-- SESSION TAB -->
+    <section id="sessionTab" class="packetsTab" [hidden]="!sessionTrue">
         <h3>session</h3>
         <div style="overflow:scroll;">
           <table class="mt-2 table table-bordered table-hover">
@@ -61,17 +96,18 @@
               <th>lPort</th>
             </thead>
             <tbody>
-
+              <tr *ngFor="let row of sessionData">
+                <td *ngFor="let cell of row | keyvalue : orderOriginal">{{cell.value}}</td>
+              </tr>
             </tbody>
           </table>
         </div>
-      </ng-container>
     </section>
-    <section [hidden]="!masterTrue">
-      <ng-container>
+    <!-- MASTER TAB -->
+    <section id="masterTab" class="packetsTab" [hidden]="!masterTrue">
         <h3>master</h3>
         <div style="overflow:scroll;">
-          <table class="mt-2 table table-bordered table-hover">
+          <table class="packetsTable mt-2 table table-bordered table-hover">
             <thead class="thead-light">
               <th>remoteIp</th>
               <th>rPort</th>
@@ -79,11 +115,42 @@
               <th>lPort</th>
             </thead>
             <tbody>
-
+              <tr *ngFor="let row of masterData">
+                <td *ngFor="let cell of row | keyvalue : orderOriginal">{{cell.value}}</td>
+              </tr>
             </tbody>
           </table>
         </div>
-      </ng-container>
     </section>
+  </section>
+
+  <!--UNFILTERED SECTION-->
+  <section id="unfilteredSection"
+    [hidden]="!unfilteredSectionTrue">
+    <header #unfilterHeader id="unfilteredHeader">
+      <h3>unfiltered</h3>
+      <div id="functionButtons" style="display:flex;gap:2px;">
+        <button
+          id="incomingStartBtn"
+          class="btn"
+          [ngClass]="dumpTrue ? 'btn-danger' : 'btn-success'"
+          (click)="getTcpdump()">{{dumpTrue ? "stop" : "start"}}</button>
+        <button
+          id="unfilteredClearBtn"
+          class="btn btn-warning"
+          (click)="clearData($event)">clear</button>
+          <button
+          id="unfilteredScrollBtn"
+          class="btn btn-light"
+          [class.active]="scrollToBottomTrue"
+          (click)="toggleScrollToBottom($event)">{{scrollToBottomTrue ? '&darr;' : '&mdash;' }}</button>
+      </div>
+    </header>
+    <pre #targetUnfiltered  id="unfilteredOutput"
+     class="mt-2 mb-2"
+     style="overflow:scroll;white-space:nowrap;"
+     (wheel)="scrollToBottomTrue ? scrollToBottomTrue = false : null">
+      <span class="d-block" *ngFor="let data of unfilteredData">{{data}}</span>
+    </pre>
   </section>
 

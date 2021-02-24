@@ -25,15 +25,15 @@ export class NetinfoComponent implements OnInit {
 
   data: Observable<Object>;
   todayDate: Date;
-  baseURL: string = this.global.backendBaseURL
+  baseURL: string = this.globalVar.backendBaseURL
 
   constructor(
-    public global: GlobalService,
+    public globalVar: GlobalService,
     @Inject('nameToken') public name,
     @Inject('currentDateToken') public currentDate,
     private http: HttpClient
   ) {
-    this.todayDate = global.currentDate;
+    this.todayDate = globalVar.currentDate;
   }
 
   //methods

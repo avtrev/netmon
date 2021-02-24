@@ -6,3 +6,19 @@ button,a.btn{
   border-top: 1px solid #00000080!important;
   box-shadow: 1px -1px 5px #00000040 inset;
 }
+
+body>.container{
+  height:100vh;
+}
+app-root{
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+
+app-packets {
+  display:flex;
+  flex-flow:column;
+  flex-grow:1;
+  height:0;
+}

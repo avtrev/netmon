@@ -1,37 +1,51 @@
 
   <h2>{{title}}</h2>
   <h5>{{ todayDate | date: 'EEEE MMMM d y hh:mm:ss a' }}</h5>
-  <div id="functionButtons" style="display:flex;gap:2px;">
+  <div id="functionButtons" class="d-flex" style="gap:2px;overflow:hidden">
     <button
       class="btn"
-      [ngClass]="listenTrue ? 'btn-danger' : 'btn-info'"
-      (click)="listen()"
-    >listen</button>
+      [ngClass]="listenTrue ? 'btn-danger' : 'btn-success'"
+      (click)="listen()">listen</button>
     <button
-      class="btn btn-info"
-      (click)="update()"
-    >refresh</button>
+      class="btn btn-warning"
+      (click)="update()">refresh</button>
+    <button
+      class="btn btn-warning"
+      [hidden]="!sessionTrue"
+      (click)="clearSessionData()">clear</button>
     <div id="searchFilter" class="d-inline-flex" style="gap:2px;">
       <label for="search">search</label>
-      <input type="text" name="search" id="search">
+      <input [(ngModel)]="searchText" type="text" name="search" id="search" size="auto" style="overflow:hidden;">
     </div>
   </div>
-  <div id="tabButtons" class="mt-1"style="display:flex;gap:2px;">
-    <button id="mainBtn"
-      class="btn btn-secondary"
-      [class.active]="mainTrue"
-      (click)="selectTableTab($event)">main</button>
-    <button  id="sessionBtn"
-      class="btn btn-secondary"
-      [class.active]="sessionTrue"
-      (click)="selectTableTab($event)"> session-log</button>
-    <button id="masterBtn"
-      class="btn btn-secondary"
-      [class.active]="masterTrue"
-      (click)="selectTableTab($event)">master-log</button>
+  <div class="d-flex">
+    <div id="tabButtons" class="mt-1"style="display:flex;gap:2px;">
+      <button id="mainBtn"
+        class="btn btn-secondary"
+        [class.active]="mainTrue"
+        (click)="selectTableTab($event)">main</button>
+      <button  id="sessionBtn"
+        class="btn btn-secondary"
+        [class.active]="sessionTrue"
+        (click)="selectTableTab($event)"> session-log</button>
+      <button id="masterBtn"
+        class="btn btn-secondary"
+        [class.active]="masterTrue"
+        (click)="selectTableTab($event)">master-log</button>
+    </div>
+    <div id="filterButtons" class="d-inline-flex">
+      <button id="ipv4Btn"
+        class="btn btn-light"
+        [class.active]="ipv4True"
+        (click)="toggleFilter($event)">ipv4</button>
+      <button id="ipv6Btn"
+        class="btn btn-light"
+        [class.active]="ipv6True"
+        (click)="toggleFilter($event)">ipv6</button>
+    </div>
   </div>
   <section [hidden]="!mainTrue">
-    <ng-container *ngIf="jsonLoaded | async">
+    <ng-container *ngIf="jsonLoaded"> <!--fix scolling issue <ng-container *ngIf="jsonLoaded | async">-->
       <h3>main</h3>
       <div style="overflow:scroll;">
         <table class="mt-2 table table-bordered table-hover">
@@ -39,7 +53,7 @@
             <th *ngFor="let cell of mainData[0] | keyvalue : orderOriginal">{{cell.key}}</th>
           </thead>
           <tbody>
-              <tr *ngFor="let row of mainData">
+              <tr *ngFor="let row of mainData | searchFilter : filterText  | searchFilter : searchText">
                 <td *ngFor="let cell of row | keyvalue : orderOriginal">{{cell.value}}</td>
               </tr>
           </tbody>
@@ -48,7 +62,7 @@
     </ng-container>
   </section>
   <section [hidden]="!sessionTrue">
-    <ng-container *ngIf="jsonLoaded | async">
+    <ng-container *ngIf="jsonLoaded">
       <h3>session</h3>
       <div style="overflow:scroll;">
         <table class="mt-2 table table-bordered table-hover">
@@ -56,7 +70,7 @@
             <th *ngFor="let cell of sessionData[0] | keyvalue : orderOriginal">{{cell.key}}</th>
           </thead>
           <tbody>
-              <tr *ngFor="let row of sessionData">
+              <tr *ngFor="let row of sessionData | searchFilter : filterText  | searchFilter : searchText">
                 <td *ngFor="let cell of row | keyvalue : orderOriginal">{{cell.value}}</td>
               </tr>
           </tbody>
@@ -65,7 +79,7 @@
     </ng-container>
   </section>
   <section [hidden]="!masterTrue">
-    <ng-container *ngIf="masterLoaded | async">
+    <ng-container *ngIf="masterLoaded">
       <h3>master</h3>
       <div style="overflow:scroll;">
         <table class="mt-2 table table-bordered table-hover">
@@ -73,7 +87,7 @@
             <th *ngFor="let cell of masterData[0] | keyvalue : orderOriginal">{{cell.key}}</th>
           </thead>
           <tbody>
-              <tr *ngFor="let row of masterData">
+              <tr *ngFor="let row of masterData | searchFilter : filterText | searchFilter : searchText">
                 <td *ngFor="let cell of row | keyvalue : orderOriginal">{{cell.value}}</td>
               </tr>
           </tbody>

@@ -22,7 +22,7 @@ export class OpenportsComponent implements OnInit {
   data: Observable<Object>;
   jsonLoaded: Promise<boolean>;
   todayDate: Date = new Date();
-  baseURL: string = this.global.backendBaseURL
+  baseURL: string = this.globalVar.backendBaseURL
 
   //KeyValue compareFn
   orderOriginal = (a: KeyValue<number, string>, b: KeyValue<number, string>): number => {
@@ -31,7 +31,7 @@ export class OpenportsComponent implements OnInit {
 
   //constructor
   constructor(
-    public global: GlobalService,
+    public globalVar: GlobalService,
     @Inject('nameToken') public name,
     private http: HttpClient
   ) {

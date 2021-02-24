@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "bash bootstrap.sh & ng serve -o",
+    "start": "ng serve --host 127.0.0.1 -o --ssl true",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -19,9 +19,12 @@
     "@angular/platform-browser": "~11.1.0",
     "@angular/platform-browser-dynamic": "~11.1.0",
     "@angular/router": "~11.1.0",
+    "@types/socket.io-client": "^1.4.35",
+    "angular-resize-event": "^2.0.1",
     "bootstrap": "^4.6.0",
     "jquery": "^3.5.1",
     "rxjs": "~6.6.0",
+    "socket.io-client": "^3.1.1",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
   },

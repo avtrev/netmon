@@ -1,0 +1,56 @@
+/* start layout styles */
+#incomingSection,
+#unfilteredSection{
+  display: flex;
+  flex-flow: column;
+  flex-grow: 1;
+  height: 0;
+}
+
+
+section.packetsTab{
+  display: flex;
+  flex-flow: column;
+  flex-grow: 1;
+  height: 0;
+}
+#incomingMainOutput{
+  flex-grow: 1;
+  height: 0;
+  border-left: 1px solid #dee2e6;
+  border-right: 1px solid #dee2e6;
+  border-bottom: 1px solid #dee2e6;
+}
+
+pre#unfilteredOutput{
+  flex-grow:1;
+  height:0;
+}
+/* end layout styles*/
+
+#tabButtons>button{
+  border-top-left-radius:8px;
+  border-top-right-radius:8px;
+  border-bottom-left-radius:0;
+  border-bottom-right-radius:0;
+}
+
+section#mainTab{
+  /* border:1px solid #dee2e6; */
+  /* border-top-right-radius:8px; */
+}
+
+#unfilteredOutput{
+  border:1px solid #dee2e6;
+}
+
+/* hide reference table head */
+#mainTable,
+#mainTable>thead,
+#mainTable>thead>th{
+  border:none;
+}
+
+#mainTable{
+  margin-top: -48px;
+}
