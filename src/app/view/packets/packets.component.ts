@@ -305,7 +305,7 @@ export class PacketsComponent implements OnInit, AfterViewInit {
     })
 
     this.ws.socket.on('tcpdump', (data) => {
-      if (data.state != undefined) console.log(data.state);
+      if (data.state != undefined) console.warn(`[TCPDUMP RUNNING] = ${data.state}`);
       if (this.incomingSectionTrue) {
         new Promise(resolve => resolve("start promise"))
           .then(mes => console.warn(mes))

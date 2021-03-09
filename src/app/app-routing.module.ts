@@ -5,6 +5,7 @@ import { NetinfoComponent } from './view/netinfo/netinfo.component';
 import { OpenportsComponent } from './view/openports/openports.component';
 import { ConnectionsComponent } from './view/connections/connections.component';
 import { PacketsComponent } from './view/packets/packets.component';
+import { HostscanComponent } from './view/hostscan/hostscan.component';
 import { LogComponent } from './view/log/log.component';
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'openports', component: OpenportsComponent },
   { path: 'connections', component: ConnectionsComponent },
   { path: 'packets', component: PacketsComponent },
+  { path: 'hostscan', component: HostscanComponent },
   { path: 'log', component: LogComponent }
 ];
 

@@ -1,0 +1,30 @@
+<header>
+  <h2>hostscan</h2>
+  <button class="btn btn-success"
+  [attr.disabled]="hostscanTrue ? 'disabled' : null"
+  (click)="startHostscan()">start scan</button>
+</header>
+<section *ngIf="hostscanTrue" id="scanStatus">
+  <h2>{{scanStatus}}</h2>
+  <pre
+    *ngIf="pingscanTrue"
+    [style.width]="pingScanPercent+'%'"
+    style="color:white;background-color:black;padding:5px;transition:width .5s ease-in-out;min-width:min-content"
+    >{{pingScanPercent | number:'1.0-0'}}%</pre>
+  <pre *ngIf="pingscanTrue">{{scanOutput}}</pre>
+  <div>
+    <h3 *ngIf="newHosts.length && pingscanTrue">host found</h3>
+    <div *ngFor="let host of newHosts">{{host}}</div>
+  </div>
+</section>
+<section>
+  <ul id="hostlist" class="mt-2">
+    <li class="mb-2 host-entry" *ngFor="let host of hostscanData ">
+      <ul>
+        <li><span>ip</span><span>{{host.ip}}</span></li>
+        <li><span>mac</span><span>{{host.mac}}</span></li>
+        <li><span>host</span><span>{{host.hostname}}</span></li>
+      </ul>
+    </li>
+  </ul>
+</section>
