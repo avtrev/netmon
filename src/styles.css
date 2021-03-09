@@ -22,3 +22,9 @@ app-packets {
   flex-grow:1;
   height:0;
 }
+
+.align-content-vh{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
