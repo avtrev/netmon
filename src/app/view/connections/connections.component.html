@@ -14,9 +14,12 @@
       [hidden]="!sessionTrue"
       (click)="clearSessionData()">clear</button>
     <div id="loopIntervalwrap" class="d-inline-flex" style="gap:2px;">
-    <label for="loopInterval" class="align-content-vh mb-0" >interval</label>
-    <input [(ngModel)]="loopInterval" type="number" name="loopInterval" id="loopInterval" size="auto" style="overflow:hidden;width:50px">
+        <label for="loopInterval" class="align-content-vh mb-0" >interval</label>
+        <select name="loopInterval" [(ngModel)]="loopInterval">
+            <option *ngFor="let num of [0,1,2,3,4,5]" [ngValue]=num>{{num}}</option>
+        </select>
     </div>
+    
     <div id="searchFilter" class="d-inline-flex" style="gap:2px;">
       <label for="search">search</label>
       <input [(ngModel)]="searchText" type="text" name="search" id="search" size="auto" style="overflow:hidden;">

@@ -1,4 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+    background-color:#000;
+}
+body>.container{
+    background-color:#DDD
+}
+
+#appHeader{
+    background-color:#DDD
+}
+
+table{
+    background-color:#FFF
+}
+
 button,a.btn{
   border-left: 1px solid #00000080!important;
   border-bottom: 1px solid #00000080!important;
@@ -9,6 +24,7 @@ button,a.btn{
 
 body>.container{
   height:100vh;
+  overflow:auto;
 }
 app-root{
   display: flex;
@@ -28,3 +44,4 @@ app-packets {
     align-items: center;
     justify-content: center;
 }
+
