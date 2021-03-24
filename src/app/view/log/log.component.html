@@ -1,1 +1,24 @@
-<h2>Log</h2>
+<header>
+    <h2>Log</h2>
+    <button class="btn" (click)="getLogData('master')">master</button>
+    <button class="btn" (click)="getLogData('ips')">ip</button>
+    <button class="btn" (click)="getLogData('connections')">service</button>
+    <button class="btn" (click)="getLogData('domains')">domain</button>
+</header>
+<section style="overflow:scroll">
+    <table class="mt-2 table table-bordered table-hover">
+        <thead class="thead-light">
+            <th *ngFor="let cell of logData[2] | keyvalue : orderOriginal">{{cell.key}}</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of logData">
+                <td *ngFor="let cell of row | keyvalue : orderOriginal">
+                    <pre *ngIf="!isArray(cell.value)">{{cell.value}}</pre>
+                    <ng-container *ngIf="isArray(cell.value)">
+                        <pre *ngFor="let subval of cell.value">{{subval}}</pre>
+                    </ng-container>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
