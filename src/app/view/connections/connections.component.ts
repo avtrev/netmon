@@ -231,22 +231,18 @@ export class ConnectionsComponent implements OnInit {
 
             this.mainData.length = 0;
             this.mainData = data.mainData;
-            console.warn("main connections data")
+            //console.warn("main connections data")
 
-            console.warn("session connections data")
             this.loadSessionData(this.mainData)
+            // console.warn("session connections data")
 
             this.masterData.length = 0;
             this.masterData = data.masterData
-            console.warn("master connections data")
+            // console.warn("master connections data")
 
+            console.warn("recieved connections data")
             this.jsonLoaded = Promise.resolve(true);//don't load tables until jsonLoaded 
         })
-        /*
-        window.onscroll = () => {
-          console.log(`${window.scrollX} ${window.scrollY}`)
-        }
-        */
     }
 
 }

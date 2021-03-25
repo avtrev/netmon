@@ -13,19 +13,19 @@ export class FilterPipe implements PipeTransform {
             return items;
         }
         searchText = searchText.toLocaleLowerCase();
-        console.log(items)
+        // console.log(items)
         return items.filter((it: any) => {
             for (let i in Object.keys(it)) {
                 //if array
                 if (it[Object.keys(it)[i]] instanceof Array) {
-                    console.log("cell contains array")
+                    // console.log("cell contains array")
                     for (let j of it[Object.keys(it)[i]]) {
                         if (j.toLocaleLowerCase().includes(searchText)) {
                             return it;
                         }
                     }
                 } else if (it[Object.keys(it)[i]].toLocaleLowerCase().includes(searchText)) {
-                    console.log(it[Object.keys(it)[i]])
+                    // console.log(it[Object.keys(it)[i]])
                     return it;
                 }
             }
