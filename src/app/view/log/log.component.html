@@ -1,9 +1,25 @@
 <header>
     <h2>Log</h2>
-    <button class="btn" (click)="getLogData('master')">master</button>
-    <button class="btn" (click)="getLogData('ips')">ip</button>
-    <button class="btn" (click)="getLogData('connections')">service</button>
-    <button class="btn" (click)="getLogData('domains')">domain</button>
+    <button
+        class="btn btn-light"
+        [class.active]="logButtonTrue[0]"
+        (click)="getLogData('master');togLogBtn(0)">master</button>
+    <button
+        class="btn btn-light"
+        [class.active]="logButtonTrue[1]"
+        (click)="getLogData('ips');togLogBtn(1)">ip</button>
+    <button
+        class="btn btn-light"
+        [class.active]="logButtonTrue[2]"
+        (click)="getLogData('connections');togLogBtn(2)">service</button>
+    <button
+        class="btn btn-light"
+        [class.active]="logButtonTrue[3]"
+        (click)="getLogData('domains');togLogBtn(3)">domain</button>
+    <div id="searchFilter" class="d-inline-flex" style="gap:2px;">
+        <label for="search">search</label>
+        <input [(ngModel)]="searchText" type="text" name="search" id="search" size="auto" style="overflow:hidden;">
+    </div>
 </header>
 <section style="overflow:scroll">
     <table class="mt-2 table table-bordered table-hover">
@@ -11,7 +27,7 @@
             <th *ngFor="let cell of logData[2] | keyvalue : orderOriginal">{{cell.key}}</th>
         </thead>
         <tbody>
-            <tr *ngFor="let row of logData">
+            <tr *ngFor="let row of logData | searchFilter : searchText">
                 <td *ngFor="let cell of row | keyvalue : orderOriginal">
                     <pre *ngIf="!isArray(cell.value)">{{cell.value}}</pre>
                     <ng-container *ngIf="isArray(cell.value)">

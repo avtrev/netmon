@@ -12,6 +12,8 @@ import { WebsocketService } from '../../service/websocket.service';
 export class LogComponent implements OnInit {
 
     logData: Array<any> = [];
+    logButtonTrue: Array<boolean> = [true, false, false, false];
+    searchText: string = "";
 
     orderOriginal = (a: KeyValue<number, string>, b: KeyValue<number, string>): number => {
         return 0
@@ -21,12 +23,20 @@ export class LogComponent implements OnInit {
         private ws: WebsocketService,
     ) { }
 
+    togLogBtn(index: number) {
+        for (let i in this.logButtonTrue) {
+            this.logButtonTrue[i] = false;
+        }
+        this.logButtonTrue[index] = true;
+    }
+
     isArray(obj): boolean {
         return obj instanceof Array;
     }
 
     getLogData(tableType: string): void {
         console.log("clicked get log button")
+        this.logData.length = 0;
         this.ws.socket.emit('log', JSON.stringify({
             tableType: tableType
         }))
