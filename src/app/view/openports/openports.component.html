@@ -5,35 +5,14 @@
   (click)="refresh()"
 >refresh</button>
 <ng-container *ngIf="jsonLoaded | async">
-
   <h3>TCP</h3>
   <table class="mt-2 table table-bordered table-hover">
     <thead class="thead-light">
       <th *ngFor="let cell of data.tcp[0] | keyvalue : orderOriginal">{{cell.key}}</th>
-
-      <!-- Example: loop using Object.keys() -->
-      <!-- <th *ngFor="let key of Object.keys(data.tcp[0])">{{key}}</th> -->
-
-      <!-- Example: manual add values -->
-      <!-- <th>service</th>
-      <th>user</th>
-      <th>ipv</th>
-      <th>proto</th>
-      <th>port</th> -->
     </thead>
     <tbody>
         <tr *ngFor="let row of data.tcp">
           <td *ngFor="let cell of row | keyvalue : orderOriginal">{{cell.value}}</td>
-
-          <!-- Example: loop using Object.keys() -->
-          <!-- <td *ngFor="let cell of Object.keys(row)">{{row[cell]}}</td> -->
-
-          <!-- Example: manual add values -->
-          <!-- <td>{{row.service}}</td>
-          <td>{{row.user}}</td>
-          <td>{{row.ipv}}</td>
-          <td>{{row.proto}}</td>
-          <td>{{row.port}}</td> -->
         </tr>
     </tbody>
   </table>

@@ -16,15 +16,16 @@ export class FilterPipe implements PipeTransform {
         // console.log(items)
         return items.filter((it: any) => {
             for (let i in Object.keys(it)) {
+                let cellData = it[Object.keys(it)[i]]
                 //if array
-                if (it[Object.keys(it)[i]] instanceof Array) {
+                if (cellData instanceof Array) {
                     // console.log("cell contains array")
-                    for (let j of it[Object.keys(it)[i]]) {
+                    for (let j of cellData) {
                         if (j.toLocaleLowerCase().includes(searchText)) {
                             return it;
                         }
                     }
-                } else if (it[Object.keys(it)[i]].toLocaleLowerCase().includes(searchText)) {
+                } else if (cellData.toLocaleLowerCase().includes(searchText)) {
                     // console.log(it[Object.keys(it)[i]])
                     return it;
                 }

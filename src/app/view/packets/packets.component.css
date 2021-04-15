@@ -28,11 +28,15 @@ pre#unfilteredOutput{
 }
 /* end layout styles*/
 
+#tabButtons{
+    gap:2px;
+}
+
 #tabButtons>button{
-  border-top-left-radius:8px;
+  /* border-top-left-radius:8px;
   border-top-right-radius:8px;
   border-bottom-left-radius:0;
-  border-bottom-right-radius:0;
+  border-bottom-right-radius:0; */
 }
 
 section#mainTab{
@@ -42,6 +46,7 @@ section#mainTab{
 
 #unfilteredOutput{
   border:1px solid #dee2e6;
+  background-color: #FFF;
 }
 
 /* hide reference table head */
@@ -52,5 +57,5 @@ section#mainTab{
 }
 
 #mainTable{
-  margin-top: -48px;
+  /* margin-top: -48px; */
 }

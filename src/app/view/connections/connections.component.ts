@@ -1,17 +1,11 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { DatePipe, DOCUMENT } from '@angular/common';
+import { Component, OnInit, Inject, Input, Output, EventEmitter, AfterViewInit } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { KeyValue } from '@angular/common';
-import { Observable, ReplaySubject } from 'rxjs'
 
 //service
 import { GlobalService } from '../../service/global.service';
 import { WebsocketService } from '../../service/websocket.service';
-import { $, promise } from 'protractor';
-import { resolve } from 'dns';
-import { RaceOperator } from 'rxjs/internal/observable/race';
-import { build$$ } from 'protractor/built/element';
-import { on } from 'events';
 @Component({
     selector: 'app-connections',
     templateUrl: './connections.component.html',
@@ -19,7 +13,7 @@ import { on } from 'events';
     providers: [DatePipe],
 })
 
-export class ConnectionsComponent implements OnInit {
+export class ConnectionsComponent implements OnInit, AfterViewInit {
     //variables
     Object = Object;
     title: string = "Connections"
@@ -40,6 +34,7 @@ export class ConnectionsComponent implements OnInit {
     sessionTrue: boolean = false;
     masterTrue: boolean = false;
     listenTrue: boolean = false;
+    @Output() listenTrueEvent = new EventEmitter<boolean>();
     ipv4True: boolean = false;
     ipv6True: boolean = false;
     tableHeaders: object = [
@@ -145,23 +140,6 @@ export class ConnectionsComponent implements OnInit {
         })
     }
 
-    /*
-    //http request version 
-    //load master data - promise
-    loadMasterData(): Promise<any> {
-        return new Promise((resolve) => {
-            this.http.get<Observable<Object>>(`${this.baseURL}/connections-master`)
-                .toPromise()
-                .then((data) => {
-                    this.masterData = data;
-                    //console.log(this.masterData);
-                    this.masterLoaded = Promise.resolve(true);
-                    resolve("master data loaded");
-                })
-        })
-    }
-    */
-
     //load session data
     loadSessionData(data: any): void {
         for (let d of data) {
@@ -187,34 +165,10 @@ export class ConnectionsComponent implements OnInit {
                 })
         })
     }
-    // listen button action event
-    /*
-    //http request version
+
     listen(): void {
         this.listenTrue = !this.listenTrue;
-        if (this.listenTrue) {
-            let count = 0;
-            var poll = () => {
-                if (this.listenTrue) {
-                    setTimeout(() => {
-                        this.update()
-                            .then(mes => {
-                                console.log(mes);
-                                console.log(`poll count ${++count}`);
-                                poll();
-                            })
-                    }, 1000)
-                }
-            }
-            poll();
-
-
-        }
-
-    }
-    */
-    listen(): void {
-        this.listenTrue = !this.listenTrue;
+        this.listenTrueEvent.emit(this.listenTrue)
         console.log(`listenTrue = ${this.listenTrue}`)
         this.update();
 
@@ -226,8 +180,6 @@ export class ConnectionsComponent implements OnInit {
             this.refreshDate();
 
             data = JSON.parse(data);
-
-
 
             this.mainData.length = 0;
             this.mainData = data.mainData;
@@ -243,6 +195,10 @@ export class ConnectionsComponent implements OnInit {
             console.warn("recieved connections data")
             this.jsonLoaded = Promise.resolve(true);//don't load tables until jsonLoaded 
         })
+    }
+
+    ngAfterViewInit(): void {
+        console.warn("loaded connections.component");
     }
 
 }

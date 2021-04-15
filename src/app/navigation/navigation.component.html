@@ -1,8 +1,8 @@
 <nav>
-  <a class="btn btn-info" routerLink="/netinfo">netinfo</a>
-  <a class="btn btn-info" routerLink="/openports">openports</a>
-  <a class="btn btn-info" routerLink="/connections">connections</a>
-  <a class="btn btn-info" routerLink="/packets">packets</a>
-  <a class="btn btn-info" routerLink="/hostscan">hostscan</a>
-  <a class="btn btn-info" routerLink="/log">log</a>
+  <a class="btn btn-info" routerLink="/netinfo" (click)="selectMenuBtn(0)">netinfo</a>
+  <a class="btn btn-info" routerLink="/openports" (click)="selectMenuBtn(1)">openports</a>
+  <a class="btn btn-info" routerLink="/connections" (click)="selectMenuBtn(2)">connections</a>
+  <a class="btn btn-info" routerLink="/packets" (click)="selectMenuBtn(3)">packets</a>
+  <a class="btn btn-info" routerLink="/hostscan" (click)="selectMenuBtn(4)">hostscan</a>
+  <a class="btn btn-info" routerLink="/log" (click)="selectMenuBtn(5)">log</a>
 </nav>

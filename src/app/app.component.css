@@ -1,0 +1,32 @@
+/* main{
+    position:relative;
+}
+main>*{
+    width: 100%;
+    position:absolute;
+    top:0;
+    left:0;
+} */
+
+main{
+    /* display:grid;
+    grid-template-columns: 100%; */
+    display:flex;
+    flex-flow:column;
+    flex-grow:1;
+    height:0;
+
+}
+main>*{
+    /* grid-area:1/1/2/2; */
+}
+nav {
+    display:flex;
+    flex-wrap:wrap;
+  }
+.opacity-zero{
+    opacity: 0;
+    z-index: -1;
+    max-height: 0;
+    overflow: hidden;
+}

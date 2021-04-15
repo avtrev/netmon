@@ -9,17 +9,17 @@ import { HostscanComponent } from './view/hostscan/hostscan.component';
 import { LogComponent } from './view/log/log.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/netinfo', pathMatch: 'full' },
-  { path: 'netinfo', component: NetinfoComponent },
-  { path: 'openports', component: OpenportsComponent },
-  { path: 'connections', component: ConnectionsComponent },
-  { path: 'packets', component: PacketsComponent },
-  { path: 'hostscan', component: HostscanComponent },
-  { path: 'log', component: LogComponent }
+    { path: '', redirectTo: '/', pathMatch: 'full' },
+    { path: 'netinfo', component: NetinfoComponent },
+    { path: 'openports', component: OpenportsComponent },
+    { path: 'connections', component: ConnectionsComponent },
+    { path: 'packets', component: PacketsComponent },
+    { path: 'hostscan', component: HostscanComponent },
+    { path: 'log', component: LogComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
 export class AppRoutingModule { }

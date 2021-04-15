@@ -5,9 +5,9 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AngularResizedEventModule } from 'angular-resize-event';
 
-import { AppRoutingModule } from './app-routing.module';
+//import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavigationComponent } from './navigation/navigation.component';
+//import { NavigationComponent } from './navigation/navigation.component';
 import { NetinfoComponent } from './view/netinfo/netinfo.component';
 import { OpenportsComponent } from './view/openports/openports.component';
 import { ConnectionsComponent } from './view/connections/connections.component';
@@ -23,28 +23,28 @@ const name: String = "Trevor";
 const currentDate: Date = new Date();
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavigationComponent,
-    NetinfoComponent,
-    OpenportsComponent,
-    ConnectionsComponent,
-    PacketsComponent,
-    LogComponent,
-    FilterPipe,
-    HostscanComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    AngularResizedEventModule
-  ],
-  providers: [
-    { provide: 'nameToken', useValue: name },
-    { provide: 'currentDateToken', useValue: currentDate },
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        //NavigationComponent,
+        NetinfoComponent,
+        OpenportsComponent,
+        ConnectionsComponent,
+        PacketsComponent,
+        LogComponent,
+        FilterPipe,
+        HostscanComponent,
+    ],
+    imports: [
+        BrowserModule,
+        //AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+        AngularResizedEventModule
+    ],
+    providers: [
+        { provide: 'nameToken', useValue: name },
+        { provide: 'currentDateToken', useValue: currentDate },
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

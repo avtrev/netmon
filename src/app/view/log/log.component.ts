@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { KeyValue } from '@angular/common';
 
 //service
@@ -9,7 +9,7 @@ import { WebsocketService } from '../../service/websocket.service';
     templateUrl: './log.component.html',
     styleUrls: ['./log.component.css']
 })
-export class LogComponent implements OnInit {
+export class LogComponent implements OnInit, AfterViewInit {
 
     logData: Array<any> = [];
     logButtonTrue: Array<boolean> = [true, false, false, false];
@@ -35,7 +35,7 @@ export class LogComponent implements OnInit {
     }
 
     getLogData(tableType: string): void {
-        console.log("clicked get log button")
+        console.log("retrieving log")
         this.logData.length = 0;
         this.ws.socket.emit('log', JSON.stringify({
             tableType: tableType
@@ -48,6 +48,10 @@ export class LogComponent implements OnInit {
             data = JSON.parse(data);
             this.logData = data.tableData
         })
+    }
+
+    ngAfterViewInit(): void {
+        console.warn("loaded log.component");
     }
 
 }

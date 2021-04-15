@@ -58,23 +58,17 @@
         <header #mainTabHeader id="mainTabHeader">
           <h3 class="ml-2">main</h3>
         </header>
-        <table #incomingTableHead id="incomingTableHead" class="mb-0 table table-bordered">
-          <thead class="thead-light">
-            <th [style.width]="thw[0]">remoteIp</th>
-            <th [style.width]="thw[1]">rPort</th>
-            <th [style.width]="thw[2]">localIp</th>
-            <th [style.width]="thw[3]">lPort</th>
-          </thead>
-        </table>
         <div #targetIncoming id="incomingMainOutput" class="" style="overflow:scroll;">
-          <table id="mainTable" class=" table table-bordered table-hover"
-          (wheel)="dumpTrue && scrollToBottomTrue ? scrollToBottomTrue = false : null"
-          (window:resize)="onResize($event)">
-            <thead [style.visibility]="'hidden'" class="thead-light">
-              <th (resized)="thw[0] = returnSize($event)" #rip id="rip" class="rip">remoteIp</th>
-              <th (resized)="thw[1] = returnSize($event)"  #rp id="rp" class="rp">rPort</th>
-              <th (resized)="thw[2] = returnSize($event)"  #lip id="lip" class="lip">localIp</th>
-              <th (resized)="thw[3] = returnSize($event)"  #lp id="lp" class="lp">lPort</th>
+          <table
+            #mainTable
+            id="mainTable"
+            class=" table table-bordered table-hover"
+            >
+            <thead class="thead-light">
+              <th>remoteIp</th>
+              <th>remotePort</th>
+              <th>localIp</th>
+              <th>localPort</th>
             </thead>
             <tbody >
               <tr *ngFor="let row of incomingData">
@@ -128,7 +122,7 @@
   <section id="unfilteredSection"
     [hidden]="!unfilteredSectionTrue">
     <header #unfilterHeader id="unfilteredHeader">
-      <h3>unfiltered</h3>
+      <h3>Unfiltered Packets</h3>
       <div id="functionButtons" style="display:flex;gap:2px;">
         <button
           id="incomingStartBtn"
@@ -148,8 +142,7 @@
     </header>
     <pre #targetUnfiltered  id="unfilteredOutput"
      class="mt-2 mb-2"
-     style="overflow:scroll;white-space:nowrap;"
-     (wheel)="scrollToBottomTrue ? scrollToBottomTrue = false : null">
+     style="overflow:scroll;white-space:nowrap;">
       <span class="d-block" *ngFor="let data of unfilteredData">{{data}}</span>
     </pre>
   </section>
