@@ -44,3 +44,18 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+#/netmon-backend python
+/netmon-backend/__pycache__/
+/netmon-backend/env/
+/netmon-backend/virtual_environment/
+/netmon-backend/ssl/
+/netmon-backend/tls/
+
+#/netmon-db mongo
+/netmon-db/data/
+/netmon-db/log/
+/netmon-db/server_key_cert.pem
+/netmon-db/ssl/
+/netmon-db/tls/
+
