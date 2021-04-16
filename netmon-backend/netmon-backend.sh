@@ -5,4 +5,7 @@
 #python netmon-backend-server-app.py &
 #python -m netmon-backend-server-app.py
 #FLASK_APP=netmon-backend-server-app.py flask run
-python netmon_backend_server_v2.py
+
+
+env/bin/python3.9 netmon_backend_server.py
+#python netmon_backend_server.py
