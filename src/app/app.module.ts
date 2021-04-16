@@ -15,6 +15,7 @@ import { PacketsComponent } from './view/packets/packets.component';
 import { LogComponent } from './view/log/log.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { HostscanComponent } from './view/hostscan/hostscan.component';
+import { LoginComponent } from './login/login.component';
 
 //service
 
@@ -33,6 +34,7 @@ const currentDate: Date = new Date();
         LogComponent,
         FilterPipe,
         HostscanComponent,
+        LoginComponent,
     ],
     imports: [
         BrowserModule,
