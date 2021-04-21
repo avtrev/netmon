@@ -1,0 +1,33 @@
+<div id="login">
+    <form action="/login"
+          method="post"
+          (ngSubmit)="logIn()">
+      <div>
+        <label>User:</label>
+        <input #userInput
+            type="text"
+            name="username"
+            [(ngModel)]="username"
+        />
+      </div>
+      <div>
+        <label>Pass:</label>
+        <input
+            type="password"
+            name="password"
+            [(ngModel)]="password"
+        />
+      </div>
+      <div>
+        <input
+            id="submit"
+            type="submit"
+            value="Login"
+        />
+      </div>
+    </form>
+    <!-- <pre>{{username}}</pre>
+        <pre>{{password}}</pre> -->
+    </div>
+    <pre>{{loginError}}</pre>
+

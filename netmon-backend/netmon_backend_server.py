@@ -12,6 +12,7 @@ import module.connections as connections
 import module.tcpdump as tcpdump
 import module.hostscan as hostscan
 import module.log as log
+import module.login as login
 
 # import module.nslookup as ns
 
@@ -114,6 +115,9 @@ def logProcess(data):
 
 
 socketio.on_event("log", logProcess)
+
+# LOG ###########################################################
+socketio.on_event("login", login.handle_login)
 
 # SOCKET IO ###########################################################
 @socketio.on("connect")

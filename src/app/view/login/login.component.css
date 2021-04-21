@@ -1,0 +1,16 @@
+:host{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+#login{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+#submit{
+    width:100%;
+}

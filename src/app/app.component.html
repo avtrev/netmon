@@ -1,43 +1,49 @@
-<header #appHeader id="appHeader">
-  <h1>netmon</h1>
-  <nav>
-    <button
-        class="btn btn-info"
-        (click)="selectMenuBtn(0);refreshChild('netinfo')">netinfo</button>
-    <button
-        class="btn btn-info"
-        (click)="selectMenuBtn(1);refreshChild('openports')">openports</button>
-    <button
-        class="btn"
-        [ngClass]="connectionsActive ? 'btn-danger' : 'btn-info'"
-        (click)="selectMenuBtn(2);refreshChild('connections')">connections</button>
-    <button
-        class="btn"
-        [ngClass]="packetsActive ? 'btn-danger' : 'btn-info'"
-        (click)="selectMenuBtn(3)">packets</button>
-    <button
-        class="btn"
-        [ngClass]="hostscanActive ? 'btn-danger' : 'btn-info'"
-        (click)="selectMenuBtn(4)">hostscan</button>
-    <button
-        class="btn btn-info"
-        (click)="selectMenuBtn(5)">log</button>
-  </nav>
-</header>
-<main>
-    <app-netinfo [class.opacity-zero]="!menuBtnTrue[0]"></app-netinfo>
-    <app-openports [class.opacity-zero]="!menuBtnTrue[1]"></app-openports>
-    <app-connections
-        (listenTrueEvent)="connectionsActive = $event"
-        [class.opacity-zero]="!menuBtnTrue[2]"></app-connections>
-    <app-packets
-        (dumpTrueEvent)="packetsActive = $event"
-        [class.opacity-zero]="!menuBtnTrue[3]"></app-packets>
-    <app-hostscan
-        (hostscanTrueEvent)="hostscanActive = $event"
-        [class.opacity-zero]="!menuBtnTrue[4]"></app-hostscan>
-    <app-log [class.opacity-zero]="!menuBtnTrue[5]"></app-log>
-</main>
+<app-login
+    *ngIf="!loggedIn" [loggedIn]="loggedIn"
+    (logginEvent)="loggedIn = $event"
+></app-login>
+<ng-container *ngIf="loggedIn">
+    <header #appHeader id="appHeader">
+      <h1>netmon</h1>
+      <nav>
+        <button
+            class="btn btn-info"
+            (click)="selectMenuBtn(0);refreshChild('netinfo')">netinfo</button>
+        <button
+            class="btn btn-info"
+            (click)="selectMenuBtn(1);refreshChild('openports')">openports</button>
+        <button
+            class="btn"
+            [ngClass]="connectionsActive ? 'btn-danger' : 'btn-info'"
+            (click)="selectMenuBtn(2);refreshChild('connections')">connections</button>
+        <button
+            class="btn"
+            [ngClass]="packetsActive ? 'btn-danger' : 'btn-info'"
+            (click)="selectMenuBtn(3)">packets</button>
+        <button
+            class="btn"
+            [ngClass]="hostscanActive ? 'btn-danger' : 'btn-info'"
+            (click)="selectMenuBtn(4)">hostscan</button>
+        <button
+            class="btn btn-info"
+            (click)="selectMenuBtn(5)">log</button>
+      </nav>
+    </header>
+    <main>
+        <app-netinfo [class.opacity-zero]="!menuBtnTrue[0]"></app-netinfo>
+        <app-openports [class.opacity-zero]="!menuBtnTrue[1]"></app-openports>
+        <app-connections
+            (listenTrueEvent)="connectionsActive = $event"
+            [class.opacity-zero]="!menuBtnTrue[2]"></app-connections>
+        <app-packets
+            (dumpTrueEvent)="packetsActive = $event"
+            [class.opacity-zero]="!menuBtnTrue[3]"></app-packets>
+        <app-hostscan
+            (hostscanTrueEvent)="hostscanActive = $event"
+            [class.opacity-zero]="!menuBtnTrue[4]"></app-hostscan>
+        <app-log [class.opacity-zero]="!menuBtnTrue[5]"></app-log>
+    </main>
+</ng-container>
 
 
 <!-- <router-outlet></router-outlet> -->

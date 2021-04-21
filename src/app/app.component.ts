@@ -5,6 +5,7 @@ import { GlobalService } from './service/global.service';
 import { NetinfoComponent } from './view/netinfo/netinfo.component';
 import { OpenportsComponent } from './view/openports/openports.component';
 import { ConnectionsComponent } from './view/connections/connections.component';
+import { LoginComponent } from './view/login/login.component';
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
@@ -18,9 +19,11 @@ export class AppComponent implements AfterViewInit {
     @ViewChild(NetinfoComponent) netinfo: NetinfoComponent;
     @ViewChild(OpenportsComponent) openports: OpenportsComponent;
     @ViewChild(ConnectionsComponent) connections: ConnectionsComponent;
+    @ViewChild(LoginComponent) login: LoginComponent;
     connectionsActive: boolean;
     packetsActive: boolean;
     hostscanActive: boolean;
+    loggedIn: boolean = false;
     constructor(
         public globalVar: GlobalService,
         @Inject('nameToken') private name

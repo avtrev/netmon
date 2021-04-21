@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AngularResizedEventModule } from 'angular-resize-event';
 
-//import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 //import { NavigationComponent } from './navigation/navigation.component';
 import { NetinfoComponent } from './view/netinfo/netinfo.component';
@@ -15,7 +15,7 @@ import { PacketsComponent } from './view/packets/packets.component';
 import { LogComponent } from './view/log/log.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { HostscanComponent } from './view/hostscan/hostscan.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './view/login/login.component';
 
 //service
 
@@ -38,7 +38,7 @@ const currentDate: Date = new Date();
     ],
     imports: [
         BrowserModule,
-        //AppRoutingModule,
+        AppRoutingModule,
         HttpClientModule,
         FormsModule,
         AngularResizedEventModule

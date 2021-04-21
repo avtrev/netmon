@@ -7,6 +7,7 @@ import { ConnectionsComponent } from './view/connections/connections.component';
 import { PacketsComponent } from './view/packets/packets.component';
 import { HostscanComponent } from './view/hostscan/hostscan.component';
 import { LogComponent } from './view/log/log.component';
+import { LoginComponent } from './view/login/login.component';
 
 const routes: Routes = [
     { path: '', redirectTo: '/', pathMatch: 'full' },
@@ -15,7 +16,8 @@ const routes: Routes = [
     { path: 'connections', component: ConnectionsComponent },
     { path: 'packets', component: PacketsComponent },
     { path: 'hostscan', component: HostscanComponent },
-    { path: 'log', component: LogComponent }
+    { path: 'log', component: LogComponent },
+    { path: 'login', component: LoginComponent }
 ];
 
 @NgModule({
