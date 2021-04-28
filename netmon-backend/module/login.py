@@ -3,6 +3,13 @@ import os
 import json
 from flask_socketio import emit
 
+# imports binary to mongo
+from bson.binary import Binary
+import pickle
+
+# local imports
+import module.mongo as mongo
+
 users = {
     "admin": {
         "salt": b"S\xde}U\xb3i\xbf\xc5b\xc7\x00/H]\xeb\xa4@\ntZI/z/\xc5\xf5/\xa9w+\x13\x11",
@@ -18,6 +25,58 @@ def addUser(username, password):
     )
 
     users[username] = {"salt": salt, "key": key}
+
+
+def addUserMongo(username, password):
+    salt = os.urandom(32)  # rembember this
+    key = hashlib.pbkdf2_hmac(
+        "sha256", password.encode("utf-8"), salt, 100000, dklen=128
+    )
+
+    # parse binary
+    saltBytes = pickle.dumps(salt)
+
+    keyBytes = pickle.dumps(key)
+
+    try:
+        mongo.db["users"].insert_one(
+            {"username": username, "salt": Binary(saltBytes), "key": Binary(keyBytes)}
+        )
+    except Exception as e:
+        print(e)
+        return False
+    finally:
+        return True
+
+
+def checkUserPassMongo(username, pass_to_check):
+    user = {}
+    try:
+        user = dict(mongo.db["users"].find({"username": username}, {"_id": 0})[0])
+    except Exception as e:
+        print(e)
+        return False
+    finally:
+        if len(user) > 0:
+            salt = pickle.loads(user["salt"])
+            key = pickle.loads(user["key"])
+            print(salt)
+            print(key)
+
+            new_key = hashlib.pbkdf2_hmac(
+                "sha256", pass_to_check.encode("utf-8"), salt, 100000, dklen=128
+            )
+
+            if new_key == key:
+                print(f"{username} password match")
+                return True
+            else:
+                print(f"{username} password failed")
+                return False
+
+        else:
+            print(f"{username} does not exist")
+            return False
 
 
 def checkUserPass(username, pass_to_check):
@@ -43,5 +102,5 @@ def handle_login(data):
     data = json.loads(data)
     username = data["username"]
     password = data["password"]
-    match = checkUserPass(username, password)
+    match = checkUserPassMongo(username, password)
     emit("login", json.dumps(match))
