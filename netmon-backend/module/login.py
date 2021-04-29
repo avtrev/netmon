@@ -35,7 +35,6 @@ def addUserMongo(username, password):
 
     # parse binary
     saltBytes = pickle.dumps(salt)
-
     keyBytes = pickle.dumps(key)
 
     try:
@@ -97,10 +96,38 @@ def checkUserPass(username, pass_to_check):
         return False
 
 
+def adminCheck():
+    user = None
+    try:
+        user = mongo.db["users"].find_one({"username": "admin"})
+    except Exception as e:
+        print(e)
+        return False
+    finally:
+        print(f"user = {user}")
+        if user == None:
+            return False
+        else:
+            return True
+
+
 def handle_login(data):
     print(data)
     data = json.loads(data)
-    username = data["username"]
-    password = data["password"]
-    match = checkUserPassMongo(username, password)
-    emit("login", json.dumps(match))
+    if data["type"] == "adminCheck":
+        print("admin check")
+        adminExists = adminCheck()
+        emit("login", json.dumps({"type": "adminCheck", "adminExists": adminExists}))
+    elif data["type"] == "addUser":
+        print("add user")
+        username = data["username"]
+        password = data["password"]
+        addUserMongo(username, password)
+        adminExists = adminCheck()
+        emit("login", json.dumps({"type": "addUser", "adminExists": adminExists}))
+
+    elif data["type"] == "login":
+        username = data["username"]
+        password = data["password"]
+        match = checkUserPassMongo(username, password)
+        emit("login", json.dumps({"type": "login", "match": match}))

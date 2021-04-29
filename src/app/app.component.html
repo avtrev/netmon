@@ -27,6 +27,12 @@
         <button
             class="btn btn-info"
             (click)="selectMenuBtn(5)">log</button>
+        <button
+            class="btn btn-info"
+            [attr.disabled]="connectionsActive || packetsActive || hostscanActive ? 'disabled' : null"
+            (click)="loggedIn = false"
+
+        >logout</button>
       </nav>
     </header>
     <main>

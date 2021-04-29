@@ -1,6 +1,34 @@
-<div id="login">
-    <form action="/login"
-          method="post"
+<div *ngIf="!adminExists" id="addUser">
+    <form  
+          (ngSubmit)="addUser()">
+      <div>
+        <label>User:</label>
+        <input
+            type="text"
+            name="username"
+            [(ngModel)]="username"
+            disabled
+        />
+      </div>
+      <div>
+        <label>Pass:</label>
+        <input
+            type="password"
+            name="password"
+            [(ngModel)]="password"
+        />
+      </div>
+      <div>
+        <input
+            id="submit"
+            type="submit"
+            value="add admin user"
+        />
+      </div>
+    </form>
+</div>
+<div *ngIf="adminExists" id="login">
+    <form  
           (ngSubmit)="logIn()">
       <div>
         <label>User:</label>
@@ -26,8 +54,8 @@
         />
       </div>
     </form>
-    <!-- <pre>{{username}}</pre>
-        <pre>{{password}}</pre> -->
-    </div>
-    <pre>{{loginError}}</pre>
+</div>
+<!-- <pre>{{username}}</pre>
+<pre>{{password}}</pre> -->
+<pre>{{loginError}}</pre>
 
