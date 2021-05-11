@@ -79,23 +79,15 @@ Module Files:
 
 netmon/netmon-backend/module/
 
-  connections.py
-  
-  hostscan.py
-  
-  log.py
-  
-  login.py
-  
-  mongo.py
-  
-  netinfo.py
-  
-  nslookup.py
-  
-  openports.py
-  
-  tcpdump.py
+- connections.py
+- hostscan.py
+- log.py
+- login.py
+- mongo.py
+- netinfo.py
+- nslookup.py
+- openports.py
+- tcpdump.py
 
 
 
