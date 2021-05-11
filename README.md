@@ -8,7 +8,7 @@ The netmon repo is for code example purposes.
 
 The repo does not contain all the files needed to execute the application.
 
-This application is for MacOs
+This application is made for MacOs.
 
 # Description
 
