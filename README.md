@@ -14,6 +14,8 @@ This application is made for MacOs.
 
 This application acts as a host network monitor utility as well as displays useful network information.
 
+All communication between frontend, backend and database is encrypted with TLS
+
 Application Parts:
 
   netinfo
