@@ -3,8 +3,11 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.0.
 
 This project is a work in progress and is still in the development stage.
+
 The netmon repo is for code example purposes.
+
 The repo does not contain all the files needed to execute the application.
+
 This application is for MacOs
 
 # Description
