@@ -37,7 +37,7 @@ Application Parts:
 
     - option 2: displays realtime incoming packets in table form
 
-  hostscan:
+  hostscan
   
     - scans the local network for host
 
@@ -45,7 +45,7 @@ Application Parts:
 
     - displays [ ip|macAddress|hostname ]
 
-  log:
+  log
   
     - displays information on past host network activity, collected and dumped into the database
 
@@ -55,15 +55,14 @@ Application Parts:
 
 # Stack
 
-Angular
-Python | Flask | SocketIO
-Mongodb
+Angular | Python | Flask | SocketIO | Mongodb
 
 # FrontEnd Location
 
 netmon/src/app/
 
 Angular component files:
+
 netmon/src/app/view/
 
 # BackEnd Location
@@ -73,19 +72,29 @@ netmon/netmon-backend/
 Main Python server file:
 
 netmon/netmon-backend/
+
   netmon_backend_server.py
 
 Module Files:
 
 netmon/netmon-backend/module/
+
   connections.py
+  
   hostscan.py
+  
   log.py
+  
   login.py
+  
   mongo.py
+  
   netinfo.py
+  
   nslookup.py
+  
   openports.py
+  
   tcpdump.py
 
 
