@@ -2,26 +2,74 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.0.
 
-## Development server
+This project is a work in progress and is still in the development stage.
+The netmon repo is for code example purposes.
+The repo does not contain all the files needed to execute the application.
+This application is for MacOs
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+# Description
 
-## Code scaffolding
+This application acts as a host network monitor utility as well as displays useful network information.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Application Parts:
+  netinfo
+    - displays local host info [ hostname|macAddress|ipv4|ipv6|broadcast|wan ]
+  openports
+    - displays open TCP/UDP ports and which services they belong to
+  connections
+    - displays current running services that have established connections
+    - displays [ service|user|ipVersion|localIp|localPort|remoteIp|remotePort ]
+    - searchable
+  packets
+    - uses tcpdump to display packet traffic
+    - option 1: displays realtime packet dump raw output
+    - option 2: displays realtime incoming packets in table form
+  hostscan:
+    - scans the local network for host
+    - resolves hostname (not in all cases)
+    - displays [ ip|macAddress|hostname ]
+  log:
+    - displays information on past host network activity, collected and dumped into the database
+    - displays in table form
+    - searchable
 
-## Build
+# Stack
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Angular
+Python | Flask | SocketIO
+Mongodb
 
-## Running unit tests
+# FrontEnd Location
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+netmon/src/app/
 
-## Running end-to-end tests
+Angular component files:
+netmon/src/app/view/
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+# BackEnd Location
 
-## Further help
+netmon/netmon-backend/
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Main Python server file:
+
+netmon/netmon-backend/
+  netmon_backend_server.py
+
+Module Files:
+
+netmon/netmon-backend/module/
+  connections.py
+  hostscan.py
+  log.py
+  login.py
+  mongo.py
+  netinfo.py
+  nslookup.py
+  openports.py
+  tcpdump.py
+
+
+
+
+
+
